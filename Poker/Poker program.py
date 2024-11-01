@@ -330,7 +330,7 @@ def start():
                     players_straight_index = [user_sum_index, first_sum_index, second_sum_index]
                     players_max_straight = max(players_straight_index)
                     max_straight_count = players_straight_index.count(players_max_straight)
-                    print(f"{players_straight_index} + {players_max_straight} + {max_straight_count}")
+
                     if max_straight_count != 1:
                         #in case max_straight_count is more than one, give score to winning player between both
                         for winner in players_straight_index.count(players_max_straight):
