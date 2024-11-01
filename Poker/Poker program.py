@@ -339,7 +339,6 @@ def start():
                             pass
                     else:
                         winner_max_combination = players_straight_index.index(players_max_straight)
-                        print(winner_max_combination)
 
                 elif highest_comb in ("Full"):
                     print("enters in full test")
