@@ -263,7 +263,6 @@ def start():
                     copy_first_c_values.sort(reverse=True)
                     copy_second_c_values.sort(reverse=True)
                     highest_in_copy = [copy_user_c_values[0], copy_first_c_values[0], copy_second_c_values[0]]
-                    print(highest_in_copy)
                     max_high_copy = max(highest_in_copy)
                     max_high_copy_count = highest_in_copy.count(max_high_copy)
                     if max_high_copy_count > 1:
@@ -302,7 +301,6 @@ def start():
             max_comb_index = player_combinations.index(max_comb)
             max_comb_count = player_combinations.count(max_comb)
             highest_comb = players[max_comb_index]
-            print(f"To try: {player_combinations}, {max_comb_index}, {max_comb_count}, {highest_comb}")
 
             # Check max comb
             if max_comb_count > 1:
@@ -310,11 +308,11 @@ def start():
                 copy_first_c_values = [card.value.value for card in first_opponent_cards]
                 copy_second_c_values = [card.value.value for card in second_opponent_cards]
                 if highest_comb in ("Pair", "Two Pair", "Three of a kind", "Four of a kind"):
-                    print("entra in prova coppie")
+                    print("enters in pairs test")
                     #if valore/max/length.... coppie != 1:
                         #check_high_card (forse creando liste copie e rimuovendo coppie, poi seguire procedura già fatta per controllo HC sopra)
                 elif highest_comb in ("Straight", "Flush", "Straigh Flush"): 
-                    print("entra in prova scala")
+                    print("enters in straight test")
                     straight_order = ["28", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
                     user_straight_sum, first_straight_sum, second_straight_sum = [0, 0, 0]
                     user_sum_index, first_sum_index, second_sum_index = [-1, -1, -1]
@@ -344,9 +342,9 @@ def start():
                         print(winner_max_combination)
 
                 elif highest_comb in ("Full"):
-                    print("entra in prova full")
+                    print("enters in full test")
                 else:
-                    print("in teoria prova royal") #in this case give score to both players
+                    print("enters in royal straight test") #in this case give score to both players
 
                 scores[winner_max_combination] += 1
                 winning_player = ["You", "First opponent", "Second opponent"]
