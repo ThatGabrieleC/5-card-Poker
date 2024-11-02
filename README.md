@@ -38,6 +38,8 @@ For any doubt or need, feel free to email ThatGabrieleC@outlook.com
 
 <br></br>
 ## 🃏Start playing!
+Commands and functionalities coming tomorrow.
+
 If you’re ready to get started, start exploring the project and feel free to fork, open issue or send pull request!
 
 Thank you for your interest and willingness to contribute! Together we can create something really special. Have fun playing 5-card poker! 
