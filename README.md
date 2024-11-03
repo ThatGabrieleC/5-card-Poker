@@ -41,7 +41,7 @@ For any doubt or need, feel free to email ThatGabrieleC@outlook.com
 As seen in demo, this program can be used directly in the console. 
 There are three main sections while playing:
 - **Start playing and changing cards:** The user can decide if he wants to keep his cards or change them by writing in the terminal the amount he wants(max is  five by writing all)
-- **Comparing hands and score section:** Opponents hand will be seen by the user and there will be a compare between them, determining a winner and assgining score to him/them.
+- **Comparing hands and score section:** Opponents hand will be seen by the user and there will be a compare between players hand, determining a winner and assgigning score to him/them.
 - **Continue playing cycle:** at the end of every match the user can decide if he wants continue playing and if the deck should be shuffle or not. Every round will add to continue cycle 1 point; every 3 rounds the user can also decide to reset the score or maintain as it is.
 
 If you’re ready to get started, start exploring the project and feel free to fork, open issue or send pull request!
