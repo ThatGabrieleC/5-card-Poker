@@ -1,5 +1,4 @@
 import random, time, json
-from random import shuffle
 from collections import Counter
 from enum import Enum
 
@@ -64,8 +63,9 @@ def save_scores(score):
 def generate_player_cards(deck, number_of_cards=5):
     unique_cards = set()
     while len(unique_cards) < number_of_cards:
-        unique_cards.add(random.choice(deck))
-    return list(unique_cards)
+        card = random.choice(tuple(deck))
+        unique_cards.add(card)
+    return unique_cards
 
 def replace_cards(cards, replacing_cards):
     for i in range(len(replacing_cards)):
@@ -126,13 +126,13 @@ def start():
     scores = load_scores()
     play = input("You wanna play? ")
     if play.lower() in ("yes", "sure", "yeah"):
-        all_cards = [Card(suits, value) for suits in CardSuits for value in CardValues]
-        shuffle(all_cards)
+        all_cards = {Card(suits, value) for suits in CardSuits for value in CardValues}
         replacing_cards = generate_player_cards(all_cards, number_of_cards=random.choice(range(1, 5)))
         
         user_cards = generate_player_cards(all_cards)
         first_opponent_cards = generate_player_cards(all_cards)
         second_opponent_cards = generate_player_cards(all_cards)
+        all_cards -= user_cards | first_opponent_cards | second_opponent_cards #using set union | to "assembly" cards set and remove them all together, otherwise could not be done
         #PLAYERS SPECIFIC CARDS FOR TRIALS
         # user_cards = [
         #     Card(CardSuits.Clubs, CardValues.Four),
@@ -171,7 +171,10 @@ def start():
 
                 elif quantity.lower() in card_input_index:
                     index = card_input_index.index(quantity.lower())
-                    user_cards[index] = random.choice(all_cards)
+                    card_to_remove = list(user_cards)[index]
+                    user_cards.remove(card_to_remove)
+                    new_card = random.choice(list(all_cards))
+                    user_cards.add(new_card)
                     print("Your new cards are:", ", ".join(str(card) for card in user_cards))
                     break
 
@@ -183,24 +186,25 @@ def start():
                         for index in change_indices:
                             if index in card_input_index:
                                 card_index = card_input_index.index(index)
-                                user_cards[card_index] = random.choice(all_cards)
+                                cards_to_remove = list(user_cards)[card_index]
+                                user_cards.remove(cards_to_remove)
+                                new_cards = random.choice(list(all_cards))
+                                user_cards.add(new_Cards)
                         print("Your new cards are: ", ", ".join(str(card) for card in user_cards))
                         break
                     else:
                         print("Invalid cards selected")
 
                 elif quantity.lower() == "all":
-                    unique_cards = set()
-                    while len(unique_cards) < 5:
-                        unique_cards.add(random.choice(all_cards))
-                    user_cards = list(unique_cards)
+                   user_cards = generate_player_cards(all_cards)
                     print("Your new cards are:", ", ".join(str(card) for card in user_cards))
                     break  
                             
                 else:
                     print("Invalid cards selected")
             elif change_cards.lower() == "no":    
-                break     
+                break    
+            all_cards -= user_cards
         
         time.sleep(2)
 
@@ -372,17 +376,11 @@ def start():
         while True:        
             continue_playing = input("You want to keep playing? ")
             if continue_playing.lower() == "yes":
-                wanna_shuffle = input("Wanna shuffle the deck? ")
-                if wanna_shuffle.lower() == "yes":
-                    shuffle(all_cards)
-                    print("Deck shuffled")
-                    break
-                elif wanna_shuffle.lower() == "no":
-                    break
-                else:
-                    continue
+                break
             elif continue_playing.lower() == "no":
                 exit()
+            else:
+                continue
         if game_cycles % 3 == 0:
             while True:
                 score_reset = input("Want to maintain the score or reset it? ")
