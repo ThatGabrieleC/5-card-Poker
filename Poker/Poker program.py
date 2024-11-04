@@ -189,14 +189,14 @@ def start():
                                 cards_to_remove = list(user_cards)[card_index]
                                 user_cards.remove(cards_to_remove)
                                 new_cards = random.choice(list(all_cards))
-                                user_cards.add(new_Cards)
+                                user_cards.add(new_cards)
                         print("Your new cards are: ", ", ".join(str(card) for card in user_cards))
                         break
                     else:
                         print("Invalid cards selected")
 
                 elif quantity.lower() == "all":
-                   user_cards = generate_player_cards(all_cards)
+                    user_cards = generate_player_cards(all_cards)
                     print("Your new cards are:", ", ".join(str(card) for card in user_cards))
                     break  
                             
