@@ -130,16 +130,32 @@ def start():
         shuffle(all_cards)
         replacing_cards = generate_player_cards(all_cards, number_of_cards=random.choice(range(1, 5)))
         
-        # user_cards = generate_player_cards(all_cards)
-
-        #USER SPECIFIC CARDS FOR TRIALS
-        user_cards = [
-            Card(CardSuits.Clubs, CardValues.Four),
-            Card(CardSuits.Spades, CardValues.Three),
-            Card(CardSuits.Clubs, CardValues.Five),
-            Card(CardSuits.Hearts, CardValues.Ace),
-            Card(CardSuits.Clubs, CardValues.Two)
-        ]   
+        user_cards = generate_player_cards(all_cards)
+        first_opponent_cards = generate_player_cards(all_cards)
+        second_opponent_cards = generate_player_cards(all_cards)
+        #PLAYERS SPECIFIC CARDS FOR TRIALS
+        # user_cards = [
+        #     Card(CardSuits.Clubs, CardValues.Four),
+        #     Card(CardSuits.Spades, CardValues.Three),
+        #     Card(CardSuits.Clubs, CardValues.Five),
+        #     Card(CardSuits.Hearts, CardValues.Ace),
+        #     Card(CardSuits.Clubs, CardValues.Two)
+        # ]   
+        # first_opponent_cards = [
+        #     Card(CardSuits.Clubs, CardValues.Queen),
+        #     Card(CardSuits.Spades, CardValues.King),
+        #     Card(CardSuits.Clubs, CardValues.Ten),
+        #     Card(CardSuits.Hearts, CardValues.Ace),
+        #     Card(CardSuits.Clubs, CardValues.Jack)
+        # ]   
+        # second_opponent_cards = [
+        #     Card(CardSuits.Clubs, CardValues.Four),
+        #     Card(CardSuits.Spades, CardValues.Two),
+        #     Card(CardSuits.Clubs, CardValues.Ace),
+        #     Card(CardSuits.Hearts, CardValues.Three),
+        #     Card(CardSuits.Clubs, CardValues.Five)
+        # ]
+        
         print("Your cards are:", ", ".join(str(card) for card in user_cards))
         time.sleep(2)
 
@@ -162,9 +178,8 @@ def start():
                 elif " " in quantity:
                     change_indices = quantity.lower().split()
                     if all(index in card_input_index for index in change_indices):
-                    #controlla se tutti gli indici dati dall'utente siano presenti in card_input_index
-                    #in questo modo non si ha più il problema che salta il passaggio del cambio delle
-                    #carte se si scrive una parola a caso con uno spazio
+                    #checks if all indices given by the user are present in card_input_index, in this way
+                    #there is no more skipping change cards problems even if the user writes a random word spacing it
                         for index in change_indices:
                             if index in card_input_index:
                                 card_index = card_input_index.index(index)
@@ -187,22 +202,6 @@ def start():
             elif change_cards.lower() == "no":    
                 break     
         
-        #GENERATING SPECIFIC OPPONENTS CARDS FOR TRIALS
-        first_opponent_cards = [
-            Card(CardSuits.Clubs, CardValues.Queen),
-            Card(CardSuits.Spades, CardValues.King),
-            Card(CardSuits.Clubs, CardValues.Ten),
-            Card(CardSuits.Hearts, CardValues.Ace),
-            Card(CardSuits.Clubs, CardValues.Jack)
-        ]   
-        second_opponent_cards = [
-            Card(CardSuits.Clubs, CardValues.Four),
-            Card(CardSuits.Spades, CardValues.Two),
-            Card(CardSuits.Clubs, CardValues.Ace),
-            Card(CardSuits.Hearts, CardValues.Three),
-            Card(CardSuits.Clubs, CardValues.Five)
-        ]
-
         time.sleep(2)
 
         custom_value_order = {v: v.value for v in CardValues}
