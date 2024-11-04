@@ -81,7 +81,7 @@ def check_hand(cards, custom_value_order):
     #Flush
     is_flush = len(set(card.suit for card in cards)) == 1
     #Straight Flush
-    is_straight_flush = all([is_straight, is_flush])   # La funzione all() richiede un iterabile come argomento, come una lista, una tupla o un altro tipo di sequenza. Tuttavia, is_straight e is_flush sono valori booleani singoli, non un iterabile di valori, quindi bisogna usare le parentesi quadre per prenderli come singoli    
+    is_straight_flush = all([is_straight, is_flush]) 
     #Royal Flush
     max_straight = [CardValues.Ace, CardValues.King, CardValues.Queen, CardValues.Jack, CardValues.Ten]
     is_royal_flush = is_straight_flush and all(card.value in max_straight for card in cards)
@@ -308,8 +308,7 @@ def start():
                 copy_second_c_values = [card.value.value for card in second_opponent_cards]
                 if highest_comb in ("Pair", "Two Pair", "Three of a kind", "Four of a kind"):
                     print("enters in pairs test")
-                    #if value/max/length.... of combination != 1:
-                        #check_high_card (may creating list and removingcards, then follow the procedure done in HCC)
+                    #compare comb value and if equal, follow same procedure of checking the hich card as done in HCC
                 elif highest_comb in ("Straight", "Flush", "Straigh Flush"): 
                     print("enters in straight test")
                     straight_order = ["28", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
