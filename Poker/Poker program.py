@@ -309,7 +309,7 @@ def start():
                 if highest_comb in ("Pair", "Two Pair", "Three of a kind", "Four of a kind"):
                     print("enters in pairs test")
                     #if valore/max/length.... coppie != 1:
-                        #check_high_card (forse creando liste copie e rimuovendo coppie, poi seguire procedura già fatta per controllo HC sopra)
+                        #check_high_card (may creating list and removingcards, then follow the procedure done in HCC)
                 elif highest_comb in ("Straight", "Flush", "Straigh Flush"): 
                     print("enters in straight test")
                     straight_order = ["28", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
