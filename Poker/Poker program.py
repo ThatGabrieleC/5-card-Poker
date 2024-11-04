@@ -308,7 +308,7 @@ def start():
                 copy_second_c_values = [card.value.value for card in second_opponent_cards]
                 if highest_comb in ("Pair", "Two Pair", "Three of a kind", "Four of a kind"):
                     print("enters in pairs test")
-                    #if valore/max/length.... coppie != 1:
+                    #if value/max/length.... of combination != 1:
                         #check_high_card (may creating list and removingcards, then follow the procedure done in HCC)
                 elif highest_comb in ("Straight", "Flush", "Straigh Flush"): 
                     print("enters in straight test")
